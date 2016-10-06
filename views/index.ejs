@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= title %></title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+    <link href="//cdn.bootcss.com/bootstrap/4.0.0-alpha.3/css/bootstrap.min.css" rel="stylesheet">
+  </head>
+  <body>
+    <div id="metadata"></div>
+  </body>
+  <script src="//cdn.bootcss.com/socket.io/1.4.8/socket.io.min.js"></script>
+  <script src="//cdn.bootcss.com/jquery/3.1.1/jquery.min.js"></script>
+  <script>
+    var socket = io('/');
+    socket.on('metadata', function (metadata) {
+      $("#metadata").append("<p>"+JSON.stringify(metadata)+"<p>");
+    });
+  </script>
+</html>
