@@ -1,6 +1,4 @@
-var P2PSpider = require('../p2pspider/lib');
-
-
+var P2PSpider = require('../btspider');
 
 function star(io) {
 
