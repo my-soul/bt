@@ -13,7 +13,7 @@
   <script>
     var socket = io('/');
     socket.on('metadata', function (metadata) {
-      $("#metadata").append("<p>"+JSON.stringify(metadata)+"<p>");
+      $("#metadata").append("<p>"+metadata.magnet+"<p>");
     });
   </script>
 </html>
