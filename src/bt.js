@@ -20,9 +20,10 @@ function star(io) {
 
     p2p.on('metadata', function (metadata) {
         // At here, you can extract data and save into database.
+        metadata.name=new Buffer(metadata.info.name).toString();
         io.emit('metadata',metadata);
         console.log("----------------------");
-        console.dir(new Buffer(metadata.info.name).toString());
+        console.dir(metadata.info);
         console.log("----------------------");
     });
 
