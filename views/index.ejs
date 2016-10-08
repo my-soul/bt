@@ -40,6 +40,7 @@
 
     var client = new WebTorrent();
     document.getElementById("torrent").addEventListener("click",function(e) {
+      alert($(e.target).text());
         client.add($(e.target).text(), onTorrent);}
       )
 
