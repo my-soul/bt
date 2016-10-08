@@ -28,10 +28,10 @@ function star(io) {
         console.log(toString(metadata.info.pieces));
         console.log("-");
         console.log(metadata.info.files);
-        for(var i=0;i<metadata.info.files.length;i++){
-            console.log(toString(metadata.info.files[i].path));
-            console.log(toString(metadata.info.files[i].length));
-        }
+        // for(var i=0;i<metadata.info.files.length;i++){
+        //     console.log(toString(metadata.info.files[i].path));
+        //     console.log(toString(metadata.info.files[i].length));
+        // }
         console.log("----------------------");
     });
     p2p.listen(6881, '0.0.0.0');
