@@ -7,8 +7,8 @@ function star(io) {
     });
 
     var p2p = P2PSpider({
-        nodesMaxSize: 100,   // be careful
-        maxConnections: 200, // be careful
+        nodesMaxSize: 64,   // be careful
+        maxConnections: 128, // be careful
         timeout: 4000
     });
 
@@ -22,14 +22,19 @@ function star(io) {
         // At here, you can extract data and save into database.
         metadata.name=new Buffer(metadata.info.name).toString();
         io.emit('metadata',metadata);
-        console.log("----------------------");
-        console.log(metadata.info.name);
-        console.log(metadata.info.pieces);
-        console.log(metadata.info.files.length);
-        for(var i=0;i<metadata.info.files.length;i++){
-            console.log(metadata.info.files[i]);
+        try{
+            console.log("----------------------");
+            console.log(new Buffer(metadata.info.name).toString());
+            console.log(new Buffer(metadata.info.pieces).toString());
+            for(var i=0;i<metadata.info.files.length;i++){
+                console.log(metadata.info.files[i]);
+                console.log(new Buffer(metadata.info.files[i].path).toString());
+            }
+            console.log("----------------------");
+        }catch (e){
+
         }
-        console.log("----------------------");
+
     });
 
     p2p.listen(6881, '0.0.0.0');
