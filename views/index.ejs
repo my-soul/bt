@@ -16,8 +16,8 @@
       $("#torrent").append("<p>"+metadata.magnet+"<p>");
     });
 
-    $("#torrent").click(function () {
-      alert($(this).text())
+    document.getElementById("torrent").addEventListener("click",function(e) {
+      alert($(e.target).text());
     });
   </script>
 </html>
