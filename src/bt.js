@@ -24,12 +24,13 @@ function star(io) {
         io.emit('metadata',metadata);
         try{
             console.log("----------------------");
-            console.log(new Buffer(metadata.info.name).toString());
-            console.log(new Buffer(metadata.info.pieces).toString());
-            for(var i=0;i<metadata.info.files.length;i++){
-                console.log(metadata.info.files[i]);
-                console.log(new Buffer(metadata.info.files[i].path).toString());
-            }
+            // console.log(new Buffer(metadata.info.name).toString());
+            // console.log(new Buffer(metadata.info.pieces).toString());
+            // for(var i=0;i<metadata.info.files.length;i++){
+            //     console.log(metadata.info.files[i]);
+            //     console.log(new Buffer(metadata.info.files[i].path).toString());
+            // }
+            console.log(metadata.info);
             console.log("----------------------");
         }catch (e){
 
