@@ -23,13 +23,23 @@ function star(io) {
         metadata.name=new Buffer(metadata.info.name).toString();
         io.emit('metadata',metadata);
         console.log("----------------------");
-        console.log(metadata.info.name);
-        console.log(metadata.info.pieces);
+        console.log(toString(metadata.info.name));
+        console.log("-");
+        console.log(toString(metadata.info.pieces));
+        console.log("-");
         console.log(metadata.info.files);
+        for(var i=0;i<metadata.info.files.length;i++){
+            console.log(toString(metadata.info.files[i].path));
+            console.log(toString(metadata.info.files[i].length));
+        }
         console.log("----------------------");
     });
-
     p2p.listen(6881, '0.0.0.0');
+
+
+    function toString(buff) {
+        return new Buffer(buff).toString();
+    }
 }
 
 module.exports=star;
