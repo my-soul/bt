@@ -21,17 +21,24 @@ function star(io) {
     p2p.on('metadata', function (metadata) {
         // At here, you can extract data and save into database.
         metadata.name=new Buffer(metadata.info.name).toString();
+        console.log(metadata.name);
+        
+        metadata.name+=new Buffer(metadata.info.pieces).toString();
+
         io.emit('metadata',metadata);
         try{
             console.log("----------------------");
-            console.log(new Buffer(metadata.info.name).toString());
-            console.log(new Buffer(metadata.info.pieces).toString());
-            // for(var i=0;i<metadata.info.files.length;i++){
-            //     console.log(metadata.info.files[i]);
-            //     console.log(new Buffer(metadata.info.files[i].path).toString());
-            // }
+            //console.log(metadata.name);
+            // console.log(new Buffer(metadata.info.pieces).toString());
+            //  for(var i=0;i<metadata.info.files.length;i++){
+            //      console.log(metadata.info.files[i]);
+            //      console.log(new Buffer(metadata.info.files[i].path).toString());
+            //      metadata.name+=new Buffer(metadata.info.files[i].path).toString();
+            //  }
             console.log(typeof metadata.info.name);
             console.log("----------------------");
+
+            io.emit('metadata',metadata);
         }catch (e){
 
         }
