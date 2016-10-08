@@ -4,20 +4,45 @@
     <title><%= title %></title>
     <link rel='stylesheet' href='/stylesheets/style.css' />
     <link href="//cdn.bootcss.com/bootstrap/4.0.0-alpha.3/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+      #action{
+        position: fixed;
+        right: 2em;
+        top: 2em;
+      }
+    </style>
   </head>
   <body>
+    <div id="action">
+      <button onclick="stop()">停止</button>
+      <button onclick="restart()">继续</button>
+    </div>
     <div id="torrent"></div>
   </body>
   <script src="//cdn.bootcss.com/socket.io/1.4.8/socket.io.min.js"></script>
   <script src="//cdn.bootcss.com/jquery/3.1.1/jquery.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/webtorrent/latest/webtorrent.min.js"></script>
   <script>
+    var flag=true;
+    function stop() {
+      flag=false;
+    }
+    function restart() {
+      flag=true;
+    }
     var socket = io('/');
     socket.on('metadata', function (metadata) {
-      $("#torrent").append("<p>"+metadata.magnet+"<p>");
+      if(flag)$("#torrent").append("<p>"+metadata.magnet+"<p>");
     });
 
+    var client = new WebTorrent();
     document.getElementById("torrent").addEventListener("click",function(e) {
-      alert($(e.target).text());
+      client.add($(e.target).text(), function (torrent) {
+        // Torrents can contain many files. Let's use the first.
+        var file = torrent.files[0]
+        // Display the file by adding it to the DOM. Supports video, audio, image, etc. files
+        file.appendTo('body')
+      })
     });
   </script>
 </html>
