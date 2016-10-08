@@ -16,8 +16,7 @@
     <div id="action">
       <button onclick="stop()">停止</button>
       <button onclick="restart()">继续</button>
-      <div class="log">
-
+      <div id="log">
       </div>
     </div>
     <div id="torrent"></div>
@@ -40,9 +39,11 @@
 
     var client = new WebTorrent();
     document.getElementById("torrent").addEventListener("click",function(e) {
-      alert($(e.target).attr("data-magnet"));
+      log($(e.target).attr("data-magnet"));
     })
-
+    function log (str) {
+      $("#log").text(str);
+    }
 
   </script>
 </html>

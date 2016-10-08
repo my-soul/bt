@@ -23,7 +23,9 @@ function star(io) {
         metadata.name=new Buffer(metadata.info.name).toString();
         io.emit('metadata',metadata);
         console.log("----------------------");
-        console.dir(metadata.info);
+        console.log(metadata.info.name);
+        console.log(metadata.info.pieces);
+        console.log(metadata.info.files);
         console.log("----------------------");
     });
 
