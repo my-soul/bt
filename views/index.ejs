@@ -35,7 +35,7 @@
     }
     var socket = io('/');
     socket.on('metadata', function (metadata) {
-      if(flag)$("#torrent").append("<p>"+metadata.magnet+"<p>");
+      if(flag)$("#torrent").append("<p>"+metadata.name+"<p>");
     });
 
     var client = new WebTorrent();
